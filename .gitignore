@@ -1,6 +1,4 @@
+# npm moudules
 node_modules
-backends/haskell/client_session_key.aes
-backends/haskell/dist
-backends/haskell/.cabal-sandbox
-backends/haskell/cabal.sandbox.config
-backends/haskell/.stack-work
+# Mac OS
+.DS_Store

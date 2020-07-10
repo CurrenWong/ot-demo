@@ -1,36 +1,20 @@
 
-REPORTER = dot
+help: ## print this message
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-build: socket.io.js
+build: ## update the browser builds
+	@./node_modules/.bin/gulp build
 
-socket.io.js: lib/*.js package.json
-	@./support/browserify.sh > socket.io.js
+test: ## run tests either in the browser or in Node.js, based on the `BROWSERS` variable
+	@./node_modules/.bin/gulp test
 
-test:
-	@if [ "x$(BROWSER_NAME)" = "x" ]; then make test-node; else make test-zuul; fi
+test-node: ## run tests in Node.js
+	@./node_modules/.bin/gulp test-node
 
-test-node:
-	@./node_modules/.bin/mocha \
-		--reporter $(REPORTER) \
-		test/index.js
+test-zuul: ## run tests in the browser
+	@./node_modules/.bin/gulp test-zuul
 
-test-zuul:
-	@if [ "x$(BROWSER_PLATFORM)" = "x" ]; then \
-		./node_modules/zuul/bin/zuul \
-		--browser-name $(BROWSER_NAME) \
-		--browser-version $(BROWSER_VERSION) \
-		test/index.js; \
-		else \
-		./node_modules/zuul/bin/zuul \
-		--browser-name $(BROWSER_NAME) \
-		--browser-version $(BROWSER_VERSION) \
-		--browser-platform "$(BROWSER_PLATFORM)" \
-		test/index.js; \
-	fi
+test-cov: ## run tests with coverage in Node.js
+	@./node_modules/.bin/gulp test-cov
 
-test-cov:
-	@./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- \
-		--reporter $(REPORTER) \
-		test/
-
-.PHONY: test
+.PHONY: help test test-node test-zuul test-cov
