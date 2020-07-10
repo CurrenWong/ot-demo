@@ -5,7 +5,7 @@
     "operational transformation",
     "ot"
   ],
-  "version": "0.0.15",
+  "version": "0.0.17",
   "scripts": {
     "start": "node app.js"
   },
@@ -17,7 +17,7 @@
     "url": "https://github.com/operational-transformation/ot-demo/issues"
   },
   "dependencies": {
-    "@curren/ot": "0.0.16",
+    "@curren/ot": "0.0.18",
     "express": "4.17.1",
     "morgan": "*",
     "serve-static": "*",
