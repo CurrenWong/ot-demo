@@ -17,7 +17,7 @@
     "url": "https://github.com/operational-transformation/ot-demo/issues"
   },
   "dependencies": {
-    "ot": "0.0.15",
+    "@curren/ot": "0.0.16",
     "express": "4.17.1",
     "morgan": "*",
     "serve-static": "*",
