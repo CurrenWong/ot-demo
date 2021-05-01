@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>CuMd - Register</title>
+        <!-- Custom fonts for this template-->
+        <link href="/static/css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+        <!-- Custom styles for this template-->
+        <link href="/static/css/sb-admin-2.min.css" rel="stylesheet">
+
+        <!-- My own custom styles for this template-->
+        <link href="/static/css/mine.css" rel="stylesheet">
+
+    </head>
+
+    <body class="bg-gradient-primary">
+
+        <div class="container">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                        <div class="col-lg-7">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                </div>
+                                <form class="user" action="user-register" method="post">
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control form-control-user" id="realName"
+                                                name="realName" placeholder="RealName" onblur="checkLength('realName')"
+                                                required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control form-control-user" id="nickName"
+                                                name="nickname" placeholder="Nickname" onblur="checkLength('nickName')"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control form-control-user" id="emailAddress"
+                                            name="email" placeholder="Email Address"
+                                            onblur="checkLength('emailAddress')" required>
+                                        <!-- <div class="invalid-feedback"> Sorry, that username's taken. Try another?</div> -->
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="password" class="form-control form-control-user "
+                                                id="inputPassword" name="password" placeholder="Password"
+                                                onblur="checkLength('inputPassword')" required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="password"
+                                                class="form-control form-control-user popover-password"
+                                                id="repeatPassword" name="repeatPassword" placeholder="Repeat Password"
+                                                data-toggle="popover" data-placement="bottom" data-content="两次输入的密码不一致"
+                                                onblur="checkRepwd();" data-trigger="manual" required>
+                                        </div>
+                                    </div>
+                                    <!-- 选择性别与身份 -->
+                                    <div class="form-group row">
+                                        <!-- 选择性别 -->
+                                        <div class="col-sm-2 mb-3 mb-sm-0 form-inline">
+                                            <label class="my-label" for="exampleInputPassword3">Gender :
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-2 mb-3 mb-sm-0 form-inline">
+
+                                            <input type="radio" class="form-control form-control-user" id="genderMale"
+                                                name="gender" value="male" checked required>
+                                            <label class="my-label" for="genderMale">M
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-2 mb-3 mb-sm-0 form-inline">
+                                            <input type="radio" class="form-control form-control-user" id="genderFemale"
+                                                name="gender" value="female">
+                                            <label class="my-label" for="genderFemale">F
+                                            </label>
+                                        </div>
+                                        <!-- 选择身份 -->
+                                        <div class="col-sm-2 mb-3 mb-sm-0 form-inline">
+                                            <label class="my-label" for="exampleInputPassword3">Status :
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-2 mb-3 mb-sm-0 form-inline">
+
+                                            <input type="radio" class="form-control form-control-user"
+                                                id="identityStudent" name="identity" value="student" checked required>
+                                            <label class="my-label" for="identityStudent">Stu
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-2 mb-3 mb-sm-0 form-inline">
+                                            <input type="radio" class="form-control form-control-user"
+                                                id="identityTeacher" name="identity" value="teacher">
+                                            <label class="my-label" for="identityTeacher">Tea
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!-- 结束选择性别与身份 -->
+                                    <!-- 选择学院 -->
+                                    <div class="form-group row">
+                                        <!-- 标签 -->
+                                        <div class="col-sm-2 mb-3 mb-sm-0 form-inline">
+                                            <label class="my-label" for="college">School :</label>
+                                        </div>
+                                        <!-- 选择框 -->
+                                        <div class="col-sm-4 mb-3 mb-sm-0 form-inline">
+                                            <select class="form-control form-control-user " id="collegeId"
+                                                name="collegeId" required>
+                                                <option selected value=1>光电信息与计算机工程学院</option>
+                                                <option value=2>管理学院</option>
+                                                <option value=3>理学院</option>
+                                                <option value=4>外语学院</option>
+                                                <option value=5>能源与动力学院</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- 结束选择学院 -->
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        Register Account
+                                    </button>
+                                    <hr>
+                                    <a href="#" class="btn btn-facebook btn-user btn-block disabled">
+                                        <i class="fab fa-qq fa-fw"></i> Register with QQ
+                                    </a>
+                                    <a href="#" class="btn btn-google btn-user btn-block disabled">
+                                        <i class="fab fa-weixin fa-fw"></i> Register with WeChat
+                                    </a>
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <a class="small" href="forgot-password">Forgot Password?</a>
+                                </div>
+                                <div class="text-center">
+                                    <a class="small" href="login">Already have an account? Login!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast -->
+        <!-- Position it -->
+        <div display="none" style="position: absolute; top: 50%; right: 35%; left: 35%;">
+
+            <!-- Then put toasts within -->
+            <!-- Toast 1 -->
+            <div class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <!-- <img src="..." class="rounded mr-2" alt="..."> -->
+                    <strong class="mr-auto">CuMd</strong>
+                    <small class="text-muted">just now</small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    用户名已存在
+                </div>
+            </div>
+        </div>
+        <!-- End of toast -->
+        <!-- Bootstrap core JavaScript-->
+        <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- 初始化Toast -->
+        <script>
+            $('.toast').toast({
+                delay: 5000
+            });
+
+        </script>
+        <!-- 若注册失败，通过toast提示错误 -->
+        <c:if test="${isRegisterError == 'true'}" var="isRegisterErrorFlag">
+            <script>
+                $('.toast').toast('show');
+
+            </script>
+        </c:if>
+        <!-- 校验两次密码输入是否一致 -->
+        <script>
+            // 将popover的触发器设置为手动
+            $(function () {
+                $('.popover-password').popover({
+                    trigger: 'manual'
+                });
+            });
+
+            function getValueById(elementId) {
+                return document.getElementById(elementId).value;
+            }
+
+            function getElementById(elementId) {
+                return document.getElementById(elementId);
+            }
+            // 若密码不一致，弹出提示框
+            function checkRepwd() {
+                var repwd = getValueById("inputPassword");
+                var pwd = getValueById("repeatPassword");
+                var element = getElementById("");
+                if (pwd != repwd) {
+                    $('#repeatPassword').popover('show');
+                    $('#repeatPassword').removeClass('is-valid');
+                    $('#repeatPassword').addClass('is-invalid');
+                    return false;
+                } else {
+                    $('#repeatPassword').popover('hide');
+                    $('#repeatPassword').removeClass('is-invalid');
+                    $('#repeatPassword').addClass('is-valid');
+                    return true;
+                }
+            }
+
+            // 若长度超过20，弹出提示框
+            function checkLength(elementId) {
+                var value = getValueById(elementId);
+                var element = getElementById(elementId);
+                if (value.length > 20 || value.length == 0) {
+                    // 长度大于20，将输入框状态切换为is-invalid
+                    element.classList.remove('is-valid');
+                    element.classList.add('is-invalid');
+                    // 初始化popover
+                    var options = {
+                        container: 'body',
+                        content: "长度需要在1至20个字符范围内",
+                        trigger: 'manual'
+                    };
+                    $('#' + elementId).popover(options);
+                    // 显示popover
+                    $('#' + elementId).popover('show');
+                } else {
+                    // 长度小于20，将输入框状态切换为is-valid
+                    element.classList.remove('is-invalid');
+                    element.classList.add('is-valid');
+                    // 隐藏popover
+                    $('#' + elementId).popover('hide');
+                }
+            }
+
+        </script>
+
+    </body>
+
+</html>

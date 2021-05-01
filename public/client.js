@@ -133,12 +133,45 @@
             queue.push(arguments);
             return socket;
         };
+        var md = window.markdownit();
+        // 每隔0.8秒发送请求
         setInterval(function () {
             if (queue.length) {
+                // 传输变更到服务端
                 emit.apply(socket, queue.shift());
+                // 渲染Markdown
+                var text = cm.getDoc().getValue();
+                var result = md.render(text);
+                $("#mdContainer").html(result);
             }
         }, 800);
     })();
+
+    // 右边渲染框进度条滚动时，同步左边文本框进度条
+    // $("#mdContainer").scroll(() => {
+    //     var editorObject = $('.CodeMirror-scroll')[0];
+    //     var renderObject = $('#mdContainer')[0];
+    //     var leftScrollHeight = editorObject.scrollHeight;
+    //     var rightScrollHeight = renderObject.scrollHeight;
+    //     var leftScrollTop = editorObject.scrollTop;
+    //     var rightScrollTop = renderObject.scrollTop;
+    //     // 计算
+    //     var leftTarget = rightScrollTop / rightScrollHeight * leftScrollHeight;
+    //     $(".CodeMirror-scroll").scrollTop(leftTarget);
+    // });
+
+    // 左边文本框进度条滚动时，同步右边渲染框进度条
+    $(".CodeMirror-scroll").scroll(() => {
+        var editorObject = $('.CodeMirror-scroll')[0];
+        var renderObject = $('#mdContainer')[0];
+        var leftScrollHeight = editorObject.scrollHeight;
+        var rightScrollHeight = renderObject.scrollHeight;
+        var leftScrollTop = editorObject.scrollTop;
+        var rightScrollTop = renderObject.scrollTop;
+        // 计算
+        var rightTarget = leftScrollTop / leftScrollHeight * rightScrollHeight;
+        $('#mdContainer').scrollTop(rightTarget);
+    });
 
     function init(str, revision, clients, serverAdapter) {
         cm.setValue(str);
@@ -157,4 +190,7 @@
             (cmClient.undoManager.canRedo() ? enable : disable)(redoBtn);
         });
     }
+
+
+
 })();

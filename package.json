@@ -17,12 +17,20 @@
     "url": "https://github.com/operational-transformation/ot-demo/issues"
   },
   "dependencies": {
-    "@curren/ot": "0.0.18",
-    "express": "4.17.1",
-    "morgan": "*",
-    "serve-static": "*",
+    "@curren/ot": "^0.0.18",
+    "connect-session-sequelize": "^7.1.1",
+    "diff-match-patch": "^1.0.5",
     "errorhandler": "*",
-    "socket.io": "~2.1.1"
+    "express": "4.17.1",
+    "express-session": "^1.17.1",
+    "markdown-it": "^11.0.0",
+    "morgan": "*",
+    "passport": "^0.4.1",
+    "passport.socketio": "^3.7.0",
+    "sequelize": "^6.6.2",
+    "serve-static": "*",
+    "socket.io": "~2.1.1",
+    "sqlite3": "^5.0.2"
   },
   "engines": {
     "node": "8.10.0"
